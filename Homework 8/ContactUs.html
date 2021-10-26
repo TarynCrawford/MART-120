@@ -1,0 +1,54 @@
+<html>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="mainstyle.css" type="text/css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function checkboxes ()
+        {
+          var emailaddress = document.getElementById("Email").value;
+          if(emailaddress == "")
+          {
+            document.getElementById("Email").style.backgroundColor = "red";
+            document.getElementById("Email").focus (); 
+          }
+          var fullname = document.getElementById("Name").value;
+          if(fullname == "")
+          {
+            document.getElementById("Name").style.backgroundColor = "red";
+            document.getElementById("Name").focus ();
+          }
+          var agreeTerms=document.forms["myForm"]["terms"];
+          if(agreeTerms[0].checked==false&&agreeTerms[1].checked==false)
+          {
+            alert("Please answer terms of agreement")
+          }
+        }
+    </script>   
+    </head>
+    <header>
+        <div class="container">
+    
+          <nav>
+            <ul>
+              <li><a href="HomePage.html">Home</a></li>
+              <li><a href="SecondPage.html">Campaign Story</a></li>
+              <li><a href="ContactUs.html">Contact</a></li>
+              <li><a href="MathPage.html">Math Game</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <body>
+        <h1>Contact Me</h1>
+        <form name="myForm" action="nextPage.html" type="Post">
+            Full Name: <input type="text" id="Name"><br>
+            Email Address: <input type="text" id="Email"><br>
+            <h3>Do you accept the terms of agreement?</h3>
+            <input type="radio" name="terms" value="yes" id="yes">Yes<br>
+            <input type="radio" name="terms" value="no" id="no">No<br>
+            <button id="mySubmit" type="button" class="btn btn-success" onclick='checkboxes ();'>Submit</button>
+          </form>
+    </body>
+</html>

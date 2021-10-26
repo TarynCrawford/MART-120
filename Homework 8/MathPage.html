@@ -1,0 +1,99 @@
+<html>
+    <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="mainstyle.css" rel="stylesheet" type="text/css">
+        <title></title>
+        <script>
+        var actualAnswer;
+        var number1;
+        var number2;
+        var correct = 0;
+        var incorrect = 0;
+        var percent;
+        var questionsAnswered = 0;
+    
+        function printQuestion() {
+          number1 = Math.floor(Math.random() * 10);
+          number2 = Math.floor(Math.random() * 10);
+          actualAnswer = number1 + number2;
+          document.getElementById("theQuestion").innerHTML = "What is " + number1 + "+" + number2 + "?";
+        }
+    
+        function checkAnswer() {
+          var answer = document.getElementById("txtAnswer").value;
+          if (answer == actualAnswer) {
+            document.getElementById("finalResult").innerHTML = "Good job!";
+            correct = correct + 1;
+            percent = (correct / (correct + incorrect)) * 100;
+            questionsAnswered = questionsAnswered + 1;
+              if (questionsAnswered >= 10) {
+                document.getElementById("correctIncorrect").innerHTML = "Correct: " + correct + " / " + "Incorrect: " + incorrect + " | Percentage: " + percent + "%";
+              }
+            printQuestion();
+          } else {
+            document.getElementById("finalResult").innerHTML = "Try Again!";
+            incorrect = incorrect + 1;
+            percent = (correct / (correct + incorrect)) * 100;
+            questionsAnswered = questionsAnswered + 1;
+            if (questionsAnswered >= 10) {
+                document.getElementById("correctIncorrect").innerHTML = "Correct: " + correct + " / " + "Incorrect: " + incorrect + " | Percentage: " + percent + "%";
+              }
+            printQuestion();            
+          }
+        }
+    
+        function runGame() {
+          for (var i = 1; i < 2; i++) {
+            document.getElementById("message").innerHTML += "<h" + i + ">Welcome to our game!!!</h" + i + "></p>";
+          }
+          printQuestion();
+        }
+        runGame();
+      </script>
+    <style>
+        span {
+          font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        } 
+    </style>
+    </head>
+    <header>
+        <div class="container">
+          <nav>
+            <ul>
+              <li><a href="HomePage.html">Home</a></li>
+              <li><a href="SecondPage.html">Campaign Story</a></li>
+              <li><a href="ContactUs.html">Contact</a></li>
+              <li><a href="MathPage.html">Math Game</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <body onload="runGame();">
+            <table>
+              <tr>
+                <td colspan="2">
+                  <div id="message"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <hr size="1">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div id="theQuestion"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>Your answer</td>
+                <td><input type="text" id="txtAnswer"></td>
+              </tr>
+              <tr>
+                <td colspan="2"><button id="btnSubmit" onClick="checkAnswer();">Submit</button></td>
+              </tr>
+            </table>
+            <div id="finalResult"></div>
+            <div id="correctIncorrect"></div>
+    </body>
+</html>
